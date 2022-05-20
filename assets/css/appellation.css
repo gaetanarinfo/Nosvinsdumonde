@@ -1,0 +1,12 @@
+h1,
+h2,
+h3 {
+    border-bottom: 3px solid #ffc107;
+    padding-bottom: 13px;
+    font-weight: 600;
+}
+
+.no_border {
+    padding: 0 0;
+    border: none;
+}

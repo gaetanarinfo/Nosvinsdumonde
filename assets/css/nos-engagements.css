@@ -1,0 +1,20 @@
+h1,
+h2,
+h3,
+h4 {
+    border-bottom: 3px solid #ffc107;
+    padding-bottom: 13px;
+    font-weight: 600;
+}
+
+.item_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media all and (max-width: 480px) {
+    .mobile {
+        padding: 0 0 !important;
+    }
+}

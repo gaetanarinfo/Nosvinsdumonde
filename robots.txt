@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /config/
+Disallow: /mail/
+Disallow: /modules/
+Disallow: /pages/

@@ -1,0 +1,101 @@
+h1 {
+    border-bottom: 3px solid #ffc107;
+    padding-bottom: 13px;
+    font-weight: 600;
+}
+
+.logo_login img {
+    width: 200px;
+}
+
+@media all and (max-width: 480px) {
+    .logo_login img {
+        width: 100px;
+    }
+}
+
+#form_register input[type=text],
+input[type=number],
+input[type=email],
+input[type=password],
+input[type=tel],
+#message {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.575rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#form_register input[type=text]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+#message:focus {
+    box-shadow: none;
+    color: white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+    border-bottom: 1px solid #ced4da !important;
+}
+
+.form-select {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    background: url('../../assets/img/check.svg');
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.575rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #ced4da !important;
+}
+
+.form-select option {
+    color: black;
+    background: rgba(255, 255, 255, 0.289);
+    border-radius: 0;
+}

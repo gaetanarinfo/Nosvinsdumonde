@@ -1,0 +1,12 @@
+.note_cepages i {color: #fcb714;font-size: 17px;padding: 0 6px;}
+.note_cepages i.empty {color: #fcb7149e;font-size: 17px;padding: 0 6px;}
+
+#edit_vin {display: none;}
+
+#domaine_img {display: none;}
+#vin_img {display: none;}
+
+.error_1 {color: rgb(214, 63, 63);}
+.error_2 {color: rgb(214, 63, 63);}
+
+#message_vin {display: none !important;}
