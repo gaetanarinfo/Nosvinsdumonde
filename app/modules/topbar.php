@@ -6,6 +6,17 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input id="search_input" type="text" class="form-control bg-light border-0 small" placeholder="Rechercher..." aria-label="rechercher" aria-describedby="rechercher">
+        </div>
+    </form>
+
+    <div id="search_box">
+        <ul class="list-group box_search list-group-flush shadow">
+        </ul>
+    </div>
+
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 

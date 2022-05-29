@@ -3,10 +3,11 @@
 
 <head>
 
-	<?php include 'titles.php'; ?>
-
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<meta name="author" content="Gaëtan Seineur" />
+
+	<?php include 'titles.php'; ?>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="<?= $static_img ?>icons/apple-icon-57x57.png">
@@ -63,6 +64,11 @@
 	<?= (!empty($_GET['page']) && $_GET['page'] == 'region') ? '<link href="' . $static_url . 'css/region.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
 	<?= (!empty($_GET['page']) && $_GET['page'] == 'nos-engagements') ? '<link href="' . $static_url . 'css/nos-engagements.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
 	<?= (!empty($_GET['page']) && $_GET['page'] == 'livraison') ? '<link href="' . $static_url . 'css/livraison.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
+	<?= (!empty($_GET['page']) && $_GET['page'] == 'bons-plans') ? '<link href="' . $static_url . 'css/bons-plans.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
+	<?= (!empty($_GET['page']) && $_GET['page'] == 'actualites') ? '<link href="' . $static_url . 'css/actualites.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
+	<?= (!empty($_GET['page']) && $_GET['page'] == 'actualite') ? '<link href="' . $static_url . 'css/actualite.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
+	<?= (!empty($_GET['page']) && $_GET['page'] == 'article') ? '<link href="' . $static_url . 'css/actualite.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
+	<?= (!empty($_GET['page']) && $_GET['page'] == 'meteo-vignes') ? '<link href="' . $static_url . 'css/meteo-vignes.css?' . time() . '" rel="stylesheet" type="text/css" />' : '' ?>
 
 	<?php if (!empty($_GET['page']) && $_GET['page'] == 'panier') { ?>
 		<link href="<?= $static_url ?>css/stripe.css?<?= time(); ?>" rel="stylesheet" type="text/css" />
@@ -94,15 +100,15 @@
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://nosvinsdumonde.com/<?= $language ?>/<?= $_GET['page'] ?>/<?= $_GET['id'] ?>">
-		<meta property="og:title" content="<?= $title ?>">
-		<meta property="og:description" content="<?= $description ?>">
+		<meta property="og:title" content="<?= html_entity_decode($title) ?>">
+		<meta property="og:description" content="<?= html_entity_decode($description) ?>">
 		<meta property="og:image" content="<?= $static_img ?>vins/<?= $vin['imageBoisson'] ?>">
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content="https://nosvinsdumonde.com/<?= $language ?>/<?= $_GET['page'] ?>/<?= $_GET['id'] ?>">
-		<meta property="twitter:title" content="<?= $title ?>">
-		<meta property="twitter:description" content="<?= $description ?>">
+		<meta property="twitter:title" content="<?= html_entity_decode($title) ?>">
+		<meta property="twitter:description" content="<?= html_entity_decode($description) ?>">
 		<meta property="twitter:image" content="<?= $static_img ?>vins/<?= $vin['imageBoisson'] ?>">
 	<?php } ?>
 
@@ -126,15 +132,15 @@
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://nosvinsdumonde.com/<?= $language ?>/<?= $_GET['page'] ?>/<?= $_GET['id'] ?>">
-		<meta property="og:title" content="<?= $title ?>">
-		<meta property="og:description" content="<?= $description ?>">
+		<meta property="og:title" content="<?= html_entity_decode($title) ?>">
+		<meta property="og:description" content="<?= html_entity_decode($description) ?>">
 		<meta property="og:image" content="<?= $static_img ?>champagnes/<?= $champagne['imageBoisson'] ?>">
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content="https://nosvinsdumonde.com/<?= $language ?>/<?= $_GET['page'] ?>/<?= $_GET['id'] ?>">
-		<meta property="twitter:title" content="<?= $title ?>">
-		<meta property="twitter:description" content="<?= $description ?>">
+		<meta property="twitter:title" content="<?= html_entity_decode($title) ?>">
+		<meta property="twitter:description" content="<?= html_entity_decode($description) ?>">
 		<meta property="twitter:image" content="<?= $static_img ?>champagnes/<?= $champagne['imageBoisson'] ?>">
 	<?php } ?>
 
@@ -152,6 +158,38 @@
 		<meta property="twitter:title" content="<?= $title ?>">
 		<meta property="twitter:description" content="<?= $description ?>">
 		<meta property="twitter:image" content="<?= $static_img ?>logo.png">
+	<?php } ?>
+
+	<?php if (!empty($_GET['page']) && $_GET['page'] == 'actualite' && !empty($_GET['actualiteUrl'])) { ?>
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://nosvinsdumonde.com/<?= $language ?>/actualite/<?= $_GET['actualiteUrl'] ?>">
+		<meta property="og:title" content="<?= $title ?>">
+		<meta property="og:description" content="<?= $description ?>">
+		<meta property="og:image" content="<?= $static_img ?>contents/<?= $article['image'] ?>">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://nosvinsdumonde.com/<?= $language ?>/actualite/<?= $_GET['actualiteUrl'] ?>">
+		<meta property="twitter:title" content="<?= $title ?>">
+		<meta property="twitter:description" content="<?= $description ?>">
+		<meta property="twitter:image" content="<?= $static_img ?>contents/<?= $article['image'] ?>">
+	<?php } ?>
+
+	<?php if (!empty($_GET['page']) && $_GET['page'] == 'article' && !empty($_GET['actualiteUrl'])) { ?>
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://nosvinsdumonde.com/<?= $language ?>/article/<?= $_GET['actualiteUrl'] ?>">
+		<meta property="og:title" content="<?= $title ?>">
+		<meta property="og:description" content="<?= $description ?>">
+		<meta property="og:image" content="<?= $static_img ?>contents/<?= $article['image'] ?>">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://nosvinsdumonde.com/<?= $language ?>/article/<?= $_GET['actualiteUrl'] ?>">
+		<meta property="twitter:title" content="<?= $title ?>">
+		<meta property="twitter:description" content="<?= $description ?>">
+		<meta property="twitter:image" content="<?= $static_img ?>contents/<?= $article['image'] ?>">
 	<?php } ?>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -917,10 +955,34 @@
 	</script>
 	<!-- End Google Tag Manager -->
 
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId: '433575385256976',
+				cookie: true,
+				xfbml: true,
+				version: 'v13.0'
+			});
+
+			FB.AppEvents.logPageView();
+
+		};
+
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 </head>
 
 <body>
-	
+
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TDNK3PF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->

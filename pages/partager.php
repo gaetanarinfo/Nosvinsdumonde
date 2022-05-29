@@ -67,35 +67,44 @@
         $favEx = explode('-', $fav);
 
         foreach ($favEx as $favD) {
-            
+
             $partagers = selectDB($select, $table, 'V.id IN (' . $favD . ') ORDER BY V.nom', $db, '*');
 
             foreach ($partagers as $partager) {  ?>
 
-                <div class="col-sm-4 fav_box_<?= $partager['idBoisson'] ?>">
-                    <div class="card mb-4">
+                <div class="col-md-4 mb-4 fav_box_<?= $partager['idBoisson'] ?>">
+                    <div class="card">
                         <div class="row g-0">
                             <div class="col-md-4 card_image_vin">
-                                <img role="button" data-fancybox src="<?= $static_img . strtolower($partager['typeBoisson']) . '/' . $partager['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $partager['nomBoisson'] ?>">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= mb_strtoupper($partager['nomBoisson']) . ' ' . $partager['millesimeBoisson']  ?></h5>
-                                    <div class="m-auto"><span class="badge_region"><?= $partager['regionBoisson'] ?></span></div>
-                                    <div class="mb-3"><a href="/<?= $language ?>/<?= strtolower($partager['typeBoisson']) . '/' . $partager['idBoisson']; ?>" class="btn btn-outline-warning "><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a></div>
-                                    <div class="m-auto appellation"><span><?= $partager['apellationBoisson'] ?></span></div>
-                                    <div class="m-auto prix"><span><span class="chiffre"><?= number_format($partager['prixBoisson'], 2, ',', '') ?> €</div>
-                                    <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $partager['contenanceBoisson'] ?></span></div>
+                                <?php if ($partager['planBoisson'] >= 1) { ?>
+                                    <div class="vin_plan">
+                                        <span>-<?= $partager['planPourcentBoisson'] ?>%</span>
+                                        <span><?= constant('PLAN_POURCENT') ?></span>
+                                    </div>
+                                <?php } ?>
+                                <div>
+                                    <img role="button" data-fancybox src="<?= $static_img . strtolower($partager['typeBoisson']) . '/' . $partager['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $partager['nomBoisson'] ?>">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= mb_strtoupper($partager['nomBoisson']) . ' ' . $partager['millesimeBoisson']  ?></h5>
+                                <div class="m-auto"><span class="badge_region"><?= $partager['regionBoisson'] ?></span></div>
+                                <div class="mb-3"><a href="/<?= $language ?>/<?= strtolower($partager['typeBoisson']) . '/' . $partager['idBoisson']; ?>" class="btn btn-outline-warning "><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a></div>
+                                <div class="m-auto appellation"><span><?= $partager['apellationBoisson'] ?></span></div>
+                                <div class="m-auto prix"><span><span class="chiffre"><?= ($partager['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($partager['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($partager['remiseBoisson'], 2, ',', '') : number_format($partager['prixBoisson'], 2, ',', '') ?> €</div>
+                                <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $partager['contenanceBoisson'] ?></span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            <?php } ?>
-
-        <?php } ?>
-
     </div>
+
+<?php } ?>
+
+<?php } ?>
+
+</div>
 
 </div>

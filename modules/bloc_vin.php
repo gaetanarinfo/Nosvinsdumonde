@@ -1,4 +1,4 @@
-<div class="container-md mt-5 mb-5 bloc_vin_title">
+<div id="jour" class="container-md mt-5 mb-5 bloc_vin_title">
     <h2 class="text-light"><span><i class="fa-solid fa-chevron-right me-2"></i> <?= strtoupper(constant('VIN_JOUR')) ?></span></h2>
 </div>
 
@@ -15,11 +15,11 @@
                         <img role="button" data-fancybox src="<?= $static_img . strtolower($selection_jour['typeBoisson']) . '/' . $selection_jour['imageBoisson']; ?>" class="img-fluid rounded-start" alt="">
                     </div>
                     <div class="vin_jour_title">
-                        <h3 class="text-white"><a class="text-white fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection_jour['typeBoisson']) . '/' . $selection_jour['idBoisson']; ?>"><?= mb_strtoupper($selection_jour['nomBoisson']) . ' ' . $selection_jour['millesimeBoisson']  ?></a></h3>
+                        <h3 class="text-white"><a class="text-white fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection_jour['typeBoisson']) . '/' . $selection_jour['idBoisson']; ?>"><?= $selection_jour['nomBoisson'] . ' ' . $selection_jour['millesimeBoisson']  ?></a></h3>
                     </div>
                     <div class="m-auto mt-5"><span class="badge_region"><?= $selection_jour['regionBoisson'] ?></span></div>
                     <div class="m-auto mt-2 appellation"><span class="text-white"><?= $selection_jour['apellationBoisson'] ?></span></div>
-                    <div class="m-auto mt-2 prix"><span class="text-white"><span class="chiffre"><?= number_format($selection_jour['prixBoisson'], 2, ',', '') ?></span> €</span></div>
+                    <div class="m-auto mt-2 prix"><span class="text-white"><span class="chiffre"><?= ($selection_jour['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($selection_jour['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($selection_jour['remiseBoisson'], 2, ',', '') : number_format($selection_jour['prixBoisson'], 2, ',', '') ?></span> €</span></div>
                     <div class="m-auto mb-5 contenance"><span class="text-white"><?= constant('CONTENANCE') ?> <?= $selection_jour['contenanceBoisson'] ?></span></div>
                     <div class="mb-5"><a href="/<?= $language ?>/<?= strtolower($selection_jour['typeBoisson']) . '/' . $selection_jour['idBoisson']; ?>" class="btn btn-outline-warning "><i class="fa-solid fa-chevron-right me-2"></i><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a></div>
                 </div>
@@ -32,7 +32,7 @@
 
 </div>
 
-<div class="container-md mt-5 mb-5 bloc_vin_title">
+<div id="produits" class="container-md mt-5 mb-5 bloc_vin_title">
     <h2 class="text-light"><span><i class="fa-solid fa-chevron-right me-2"></i> <?= strtoupper(constant('SELECTION')) ?></span></h2>
 </div>
 
@@ -49,15 +49,23 @@
 
         ?>
 
-            <div class="col-sm-4">
-                <div class="card mb-4" itemscope itemtype="https://schema.org/Product">
+            <div class="col-md-4 mb-4">
+                <div class="card" itemscope itemtype="https://schema.org/Product">
                     <div class="row g-0">
                         <div class="col-md-4 card_image_vin">
-                            <img itemprop="image" role="button" data-fancybox src="<?= $static_img . strtolower($selection['typeBoisson']) . '/' . $selection['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $selection['nomBoisson'] ?>">
+                            <?php if ($selection['planBoisson'] >= 1) { ?>
+                                <div class="vin_plan">
+                                    <span>-<?= $selection['planPourcentBoisson'] ?>%</span>
+                                    <span><?= constant('PLAN_POURCENT') ?></span>
+                                </div>
+                            <?php } ?>
+                            <div>
+                                <img itemprop="image" role="button" data-fancybox src="<?= $static_img . strtolower($selection['typeBoisson']) . '/' . $selection['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $selection['nomBoisson'] ?>">
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title" itemprop="name"><a class="text-dark fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>"><?= mb_strtoupper($selection['nomBoisson']) . ' ' . $selection['millesimeBoisson']  ?></a></h5>
+                                <h5 class="card-title" itemprop="name"><a class="text-dark fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>"><?= $selection['nomBoisson'] . ' ' . $selection['millesimeBoisson']  ?></a></h5>
 
                                 <div style="display: none;" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
                                     <span itemprop="ratingValue"><?= (!empty($avis_vins['note'])) ? $avis_vins['note'] : 1 ?></span>
@@ -82,7 +90,7 @@
 
                                 <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                     <link itemprop="url" href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>" />
-                                    <div class="m-auto prix"><span><span class="chiffre" itemprop="price" content="<?= number_format($selection['prixBoisson'], 2, '.', '') ?>"><?= number_format($selection['prixBoisson'], 2, ',', '') ?> <span itemprop="priceCurrency" content="EUR">€</span></div>
+                                    <div class="m-auto prix"><span><span class="chiffre" itemprop="price" content="<?= ($selection['planBoisson'] >= 1) ? number_format($selection['remiseBoisson'], 2, '.', '') : number_format($selection['prixBoisson'], 2, '.', '') ?>"><?= ($selection['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($selection['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($selection['remiseBoisson'], 2, ',', '') : number_format($selection['prixBoisson'], 2, ',', '') ?> <span itemprop="priceCurrency" content="EUR">€</span></div>
                                     <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $selection['contenanceBoisson'] ?></span></div>
                                     <link itemprop="availability" href="https://schema.org/InStock" />
                                     <meta itemprop="priceValidUntil" content="<?= date('Y-m-d', strtotime($selection['dateBoisson'])) ?>" />
@@ -102,7 +110,7 @@
         <?php } ?>
 
         <div class="text-center mt-5 mb-5">
-            <a href="/<?= $language ?>/produits" class="btn btn-outline-warning btn-lg"><i class="fa-solid fa-list me-2"></i>Voir tous nos produits</a>
+            <a href="/<?= $language ?>/produits" class="btn btn-outline-warning btn-lg"><i class="fa-solid fa-list me-2"></i><?= constant('TOUS_PRODUITS') ?></a>
         </div>
 
     </div>
@@ -119,7 +127,7 @@
 
         <div class="col-lg-5">
             <div class="card card1 mb-4 shadow">
-                <a href="#" class="text-decoration-none">
+                <a href="/<?= $language ?>/bons-plans" class="text-decoration-none">
                     <div class="row g-0">
                         <div class="col-md-12">
                             <div class="card-body text-center">

@@ -7,7 +7,7 @@ include '../../config/config.php';
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fra_fra');
 
-$final;
+$final = '';
 
 if (isset($_POST)) {
 
@@ -79,7 +79,7 @@ if (isset($_POST)) {
             }
         }
 
-         $final = ['user' => true, 'message' => 'Vin ajouter', 'message2' => 'Votre vin a bien été ajouter.', 'icone' => '<i class="fa-solid fa-circle-check" style="font-size: 40px;"></i>'];
+        $final = ['user' => true, 'message' => 'Vin ajouter', 'message2' => 'Votre vin a bien été ajouter.', 'icone' => '<i class="fa-solid fa-circle-check" style="font-size: 40px;"></i>'];
     }
 } else {
     $final = ['user' => false, 'message' => 'Une erreur est survenue !', 'back' => '<a role="button" class="back">' . constant('BACK') .  '</a>', 'icone' => '<i class="fa-solid fa-triangle-exclamation" style="font-size: 40px;"></i>'];

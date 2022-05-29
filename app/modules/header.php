@@ -14,13 +14,21 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= $static_url ?>css/sb-admin-2.min.css" rel="stylesheet">
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "profil") { ?><link href="<?= $static_url ?>css/profil.css?<?= time() ?>" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?><link href="<?= $static_url ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes") { ?><link href="<?= $static_url ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?><link href="<?= $static_url ?>css/vins.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "ajouter-vin") { ?><link href="<?= $static_url ?>css/ajouter-vin.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "ajouter-champagne") { ?><link href="<?= $static_url ?>css/ajouter-champagne.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
-    <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes") { ?><link href="<?= $static_url ?>css/champagnes.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
+    <link href="<?= $static_url ?>css/style.css?<?= time() ?>" rel="stylesheet">
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "profil") { ?>
+        <link href="<?= $static_url ?>css/profil.css?<?= time() ?>" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?>
+        <link href="<?= $static_url ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes") { ?>
+        <link href="<?= $static_url ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?>
+        <link href="<?= $static_url ?>css/vins.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "ajouter-vin") { ?>
+        <link href="<?= $static_url ?>css/ajouter-vin.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "ajouter-champagne") { ?>
+        <link href="<?= $static_url ?>css/ajouter-champagne.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes") { ?>
+        <link href="<?= $static_url ?>css/champagnes.css?<?= time(); ?>" rel="stylesheet"><?php } ?>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="<?= $static_img ?>icons/apple-icon-57x57.png">
@@ -44,6 +52,13 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="<?= $static_url ?>js/9d1d83a1dd.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= $static_url ?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?= $static_url ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?= $static_url ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
 </head>

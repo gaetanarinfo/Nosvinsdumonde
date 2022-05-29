@@ -33,23 +33,34 @@
 
 <div class="container-md mt-5 mb-5" id="bloc_vin">
 
-    <div class="row">
+    <input type="hidden" id="showPlus" value="<?= constant('PLUS_PRODUITS') ?>">
+    <input type="hidden" id="lang" value="<?= $language ?>">
+
+    <div class="row search_box_produits">
 
         <?php foreach ($produits_all as $selection) {  ?>
 
-            <div class="col-sm-4">
-                <div class="card mb-4">
+            <div class="col-md-4 mb-4 produits_search">
+                <div class="card">
                     <div class="row g-0">
                         <div class="col-md-4 card_image_vin">
-                            <img role="button" data-fancybox src="<?= $static_img . strtolower($selection['typeBoisson']) . '/' . $selection['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $selection['nomBoisson'] ?>">
+                            <?php if ($selection['planBoisson'] >= 1) { ?>
+                                <div class="vin_plan">
+                                    <span>-<?= $selection['planPourcentBoisson'] ?>%</span>
+                                    <span><?= constant('PLAN_POURCENT') ?></span>
+                                </div>
+                            <?php } ?>
+                            <div>
+                                <img role="button" data-fancybox src="<?= $static_img . strtolower($selection['typeBoisson']) . '/' . $selection['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $selection['nomBoisson'] ?>">
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><a class="text-dark fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>"><?= mb_strtoupper($selection['nomBoisson']) . ' ' . $selection['millesimeBoisson']  ?></a></h5>
+                                <h5 class="card-title"><a class="text-dark fw-bold text-decoration-none" href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>"><?= $selection['nomBoisson'] . ' ' . $selection['millesimeBoisson']  ?></a></h5>
                                 <div class="m-auto"><span class="badge_region"><?= $selection['regionBoisson'] ?></span></div>
                                 <div class="mb-3"><a href="/<?= $language ?>/<?= strtolower($selection['typeBoisson']) . '/' . $selection['idBoisson']; ?>" class="btn btn-outline-warning "><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a></div>
                                 <div class="m-auto appellation"><span><?= $selection['apellationBoisson'] ?></span></div>
-                                <div class="m-auto prix"><span><span class="chiffre"><?= number_format($selection['prixBoisson'], 2, ',', '') ?> €</div>
+                                <div class="m-auto prix"><span><span class="chiffre"><?= ($selection['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($selection['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($selection['remiseBoisson'], 2, ',', '') : number_format($selection['prixBoisson'], 2, ',', '') ?> €</div>
                                 <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $selection['contenanceBoisson'] ?></span></div>
                             </div>
                         </div>
@@ -59,6 +70,13 @@
 
         <?php } ?>
 
+    </div>
+
+    <div class="text-center">
+        <div class="mt-5">
+            <a role="button" id="show_produits" class="btn btn-outline-warning btn-lg">
+                <i class="fa-solid fa-bars me-2"></i><?= constant('PLUS_PRODUITS') ?></a>
+        </div>
     </div>
 
 </div>

@@ -2,7 +2,7 @@
 
     <div id="navbar" class="container-fluid">
 
-        <a class="navbar-brand" href="/<?= $language ?>/"><img class="logo me-2" src="<?= $static_img ?>logo.png" alt="Nosvinsdumonde.fr" />Nosvinsdumonde.fr</a>
+        <a class="navbar-brand" href="/<?= $language ?>/"><img class="logo me-2" src="<?= $static_img ?>logo.png" alt="<?= str_replace('www.', '', $_SERVER['HTTP_HOST']) ?>" /><span class="domain_name"><?= str_replace('www.', '', $_SERVER['HTTP_HOST']) ?></span></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,20 +13,36 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                    <a class="nav-link font-bold fw-bolder <?php if (empty($_GET['page'])) echo 'active'; ?>" <?php if (empty($_GET['page'])) echo 'aria-current="page"'; ?> href="/<?= $language ?>/"><i class="fa-solid fa-house me-2"></i><?= strtoupper(constant('NAVBAR_ITEM_1')) ?></a>
+                    <a class="nav-link font-bold fw-bolder <?php if (empty($_GET['page'])) echo 'active'; ?>" <?php if (empty($_GET['page'])) echo 'aria-current="page"'; ?> href="/<?= $language ?>/"><i class="fa-solid fa-house me-2 domain_name_i"></i><?= strtoupper(constant('NAVBAR_ITEM_1')) ?></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'vins') echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'vins') echo 'aria-current="page"'; ?> href="/<?= $language ?>/vins"><i class="fa-solid fa-wine-glass me-2 vin"></i><?= strtoupper(constant('NAVBAR_ITEM_2')) ?></a>
+                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'vins') echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'vins') echo 'aria-current="page"'; ?> href="/<?= $language ?>/vins"><i class="fa-solid fa-wine-glass me-2 vin domain_name_i"></i><?= strtoupper(constant('NAVBAR_ITEM_2')) ?></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'champagnes') echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'champagnes') echo 'aria-current="page"'; ?> href="/<?= $language ?>/champagnes"><i class="fa-solid fa-martini-glass-empty me-2 champagnes"></i><?= strtoupper(constant('NAVBAR_ITEM_3')) ?></a>
+                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'champagnes') echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'champagnes') echo 'aria-current="page"'; ?> href="/<?= $language ?>/champagnes"><i class="fa-solid fa-martini-glass-empty me-2 champagnes domain_name_i"></i><?= strtoupper(constant('NAVBAR_ITEM_3')) ?></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'contact' && isset($_GET['suggest'])) echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'contact') echo 'aria-current="page"'; ?> href="/<?= $language ?>/contact/suggest"><i class="fa-solid fa-location-arrow me-2"></i><?= strtoupper(constant('NAVBAR_ITEM_4')) ?></a>
+                    <a class="nav-link fw-bolder <?php if (!empty($_GET['page']) && $_GET['page'] == 'contact' && isset($_GET['suggest'])) echo 'active'; ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == 'contact') echo 'aria-current="page"'; ?> href="/<?= $language ?>/contact/suggest"><i class="fa-solid fa-location-arrow me-2 domain_name_i"></i><?= strtoupper(constant('NAVBAR_ITEM_4')) ?></a>
                 </li>
+
+                <?php if (empty($_GET['page'])) { ?>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="plus" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
+                        <ul class="dropdown-menu c-white bg-dark plus" aria-labelledby="plus">
+                            <li class="nav-item"><a role="button" id="togglePage1" data-toggle="vitisphere" class="text-decoration-none nav-link"><i class="fa-solid fa-arrow-right me-1"></i>La vitisphere</a></li>
+                            <li class="nav-item"><a role="button" id="togglePage2" data-toggle="produits" class="text-decoration-none nav-link"><i class="fa-solid fa-arrow-right me-1"></i>Nos produits</a></li>
+                            <li class="nav-item"><a role="button" id="togglePage3" data-toggle="livraison" class="text-decoration-none nav-link"><i class="fa-solid fa-arrow-right me-1"></i>Livraison</a></li>
+                            <li class="nav-item"><a role="button" id="togglePage4" data-toggle="appellationRegions" class="text-decoration-none nav-link"><i class="fa-solid fa-arrow-right me-1"></i>Appellations & Régions</a></li>
+                        </ul>
+                    </li>
+
+                <?php } ?>
 
             </ul>
 
@@ -82,7 +98,7 @@
 
                             <li>
                                 <div class="mt-3 mb-2 m-auto text-center" style="padding: 0 10px;">
-                                    <a href="/<?= $language ?>/panier/1" class="btn btn-outline-warning btn-lg" style="width: 100%;"><i class="fa-solid fa-bag-shopping me-2"></i><?= constant('REGLE_CART') ?></a>
+                                    <a href="/<?= $language ?>/panier/1" class="btn btn-outline-warning btn-lg cart_redirect" data-page="<?= 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>" style="width: 100%;"><i class="fa-solid fa-bag-shopping me-2"></i><?= constant('REGLE_CART') ?></a>
                                 </div>
                             </li>
 
@@ -101,7 +117,7 @@
                         $favorite = $_COOKIE['favoris'];
                         $favEx = explode(',', $favorite);
                         ?>
-                        <a class="nav-link fw-bolder dropdown-toggle" href="/<?= $language ?>/favoris"><i class="fa-solid fa-heart me-1"></i><?= (!empty($_COOKIE['favoris'])) ? '<span>' . count($favEx) . '</span>' : '<span></span>' ?></a>
+                        <a class="nav-link fw-bolder" href="/<?= $language ?>/favoris"><i class="fa-solid fa-heart me-1"></i><?= (!empty($_COOKIE['favoris'])) ? '<span>' . count($favEx) . '</span>' : '<span></span>' ?></a>
                     <?php } else { ?>
                         <a class="nav-link fw-bolder"><i class="fa-solid fa-heart me-1"></i><span></span></a>
                     <?php } ?>
@@ -125,7 +141,7 @@
                         </a>
                         <ul class="dropdown-menu c-white bg-dark" aria-labelledby="users">
 
-                            <?php if ($user['type_id'] == 2 || $user['type_id'] == 3) { ?>
+                            <?php if ($user['type_id'] == 3) { ?>
                                 <li><a href="/app" class="text-white dropdown-item"><i class="fa-solid fa-gear me-2"></i><?= constant('NAVBAR_APP') ?></a></li>
                                 <li><a href="/<?= $language ?>/gestion-compte" class="text-white dropdown-item"><i class="fa-solid fa-user-gear me-2"></i><?= constant('GESTION_COMPTE') ?></a></li>
                                 <li><a href="/<?= $language ?>/historique-commandes" class="text-white dropdown-item"><i class="fa-solid fa-cart-shopping me-2"></i><?= constant('GESTION_COMMANDE') ?></a></li>
@@ -164,7 +180,8 @@
             <div id="form_search" class="d-flex w-20">
                 <input id="lang" type="hidden" value="<?= $language ?>">
                 <input id="host" type="hidden" value="<?= $_SERVER['HTTP_HOST'] ?>">
-                <input id="input_search" class="form-control me-2" type="search" placeholder="<?= constant('SEARCH_PLACEHOLER') ?>" aria-label="Search">
+                <input id="input_search" class="form-control me-2" type="text" placeholder="<?= constant('SEARCH_PLACEHOLER') ?>" aria-label="Search">
+                <div class="text-white close_search" role="button"><i class="fa-solid fa-xmark"></i></div>
             </div>
 
             <div id="search_box">

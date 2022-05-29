@@ -58,6 +58,14 @@ if (!empty($_GET['page']) && $_GET['page'] == 'region' && !empty($_GET['regionId
 	$verifRegion = selectDB('*', 'regions', 'id_boisson = ' . $_GET['type'] . ' AND id = ' . $_GET['regionId'], $db, '1');
 }
 
+if (!empty($_GET['page']) && $_GET['page'] == 'actualite' && !empty($_GET['actualiteUrl'])) {
+	$verifActualite = selectDB('*', 'contents', 'url = "' . $_GET['actualiteUrl'] . '"', $db, '1');
+}
+
+if (!empty($_GET['page']) && $_GET['page'] == 'article' && !empty($_GET['actualiteUrl'])) {
+	$verifActualite = selectDB('*', 'contents', 'url = "' . $_GET['actualiteUrl'] . '"', $db, '1');
+}
+
 // Page qui redirige
 if (empty($_GET['page'])) {
 	include 'modules/header.php';
@@ -180,6 +188,22 @@ if (empty($_GET['page'])) {
 } else if (!empty($_GET['page']) && $_GET['page'] == 'region' && empty($_GET['id']) && $verifRegion) {
 	include 'modules/header.php';
 	include 'pages/region.php';
+	include 'modules/footer.php';
+} else if (!empty($_GET['page']) && $_GET['page'] == 'bons-plans') {
+	include 'modules/header.php';
+	include 'pages/bons-plans.php';
+	include 'modules/footer.php';
+} else if (!empty($_GET['page']) && $_GET['page'] == 'actualites') {
+	include 'modules/header.php';
+	include 'pages/actualites.php';
+	include 'modules/footer.php';
+} else if (!empty($_GET['page']) && $_GET['page'] == 'actualite' && !empty($_GET['actualiteUrl']) && $verifActualite) {
+	include 'modules/header.php';
+	include 'pages/actualite.php';
+	include 'modules/footer.php';
+} else if (!empty($_GET['page']) && $_GET['page'] == 'article' && !empty($_GET['actualiteUrl']) && $verifActualite) {
+	include 'modules/header.php';
+	include 'pages/actualite.php';
 	include 'modules/footer.php';
 } else {
 	header('Location: ../../404');

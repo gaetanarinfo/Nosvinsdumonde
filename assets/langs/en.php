@@ -12,8 +12,8 @@ define('TITLE_CHAMPAGNES', 'Matching champagnes - Presentation of champagne bott
 define('NAVBAR_ITEM_1', 'Home');
 define('NAVBAR_ITEM_2', 'Wines');
 define('NAVBAR_ITEM_3', 'Champagnes');
-define('NAVBAR_ITEM_4', 'Add a product');
-define('SEARCH_PLACEHOLER', 'Search for a product, a brand...');
+define('NAVBAR_ITEM_4', 'Add <span class="domain_name">a product</span>');
+define('SEARCH_PLACEHOLER', 'Search for a product, news...');
 
 define('NAVBAR_APP', 'Access the application');
 
@@ -316,8 +316,8 @@ define('MESSAGE_UPDATE_1', 'Modification validated.');
 define('MESSAGE_UPDATE_1_1', 'Your account has been modified.');
 define('MESSAGE_UPDATE_3', 'An error has occurred !');
 
-define('TITLE_PAGE_REGISTER', 'Account creation').
-define('SUBTITLE_PAGE_REGISTER', 'Create your Nosvinsdumonde account');
+define('TITLE_PAGE_REGISTER', 'Account creation') .
+    define('SUBTITLE_PAGE_REGISTER', 'Create your Nosvinsdumonde account');
 
 define('SOCIETE_3', 'Administrator');
 define('QUESTION_MAIL', 'Do not hesitate to contact us for any questions relating to your account.');
@@ -547,3 +547,52 @@ define('BLOC_SEMI_FOOT_1_1', 'GUARANTEED');
 define('BLOC_SEMI_FOOT_2_2', 'IN 48H AT YOUR HOME*');
 define('BLOC_SEMI_FOOT_3_3', 'SECURE');
 define('BLOC_SEMI_FOOT_4_4', 'TASTED AND APPROVED');
+
+define('ERROR_CART', 'COMING SOON !');
+define('EMPTY_PRODUIT', 'Product temporarily unavailable on nosvinsdumonde.com');
+
+define('TITLE_PAGE_PLANS', 'Good deals alcohol promotion wine champagne cheap');
+define('LINK_PAGE_SELECTION', 'our selection');
+define('LINK_PAGE_PLANS', 'Tips');
+define('PLAN_POURCENT', 'OFFER TO SEIZE');
+
+define('TITLE_PAGE_ACTUALITES', 'Our news');
+define('LINK_ACTUALITE', 'News');
+define('SUITE', 'Read more');
+define('PLUS_ACTU', 'See more news');
+define('ARTICLE_LAST', 'LAST ARTICLES');
+define('PAR', 'By ');
+define('PARTAGE', 'Share');
+define('LE', 'The');
+define('LIRE_AUSSI', 'Read also');
+
+define('PLUS_PRODUITS', 'See more products');
+define('TOUS_PRODUITS', 'See all our products');
+define('RELATION_VIN', 'You might love these wines');
+
+define('SIGNAL_COMMENT', 'Signal a comment');
+define('SIGNAL_COMMENT_TEST', '<p>Have you spotted a comment with illegal or infringing content?</p>
+<p>In order to help us process your alert, please describe precisely what you believe to be illegal in this message.</p>');
+
+define('MESSAGE_ABUSE_1', 'Your report has been taken into account. Our team will take care of it quickly.');
+define('MESSAGE_ABUSE_2', 'An error occurred!');
+
+define('FORM_ABUSE_1', 'Please enter your email *');
+define('FORM_ABUSE_2', 'Title of your report');
+define('FORM_ABUSE_3', 'Explain here why the message seems illegal to you *');
+
+define('ALL_COMMENTS', 'No comments yet for this article.');
+
+define('SIGNAL_COMMENTS', 'Flag this content as inappropriate');
+
+define('LAISSE_COMMENT', 'Leave a comment');
+
+define('COUNT_COMMENT', 'All comments');
+
+define('FORM_COMMENT_1', 'Your name/nickname');
+define('FORM_COMMENT_2', 'Your email');
+define('FORM_COMMENT_3', 'Your comment');
+define('PUBLIER', 'PUBLISH');
+
+define('MESSAGE_MERCI_COMMENT', 'Thank you for your comment.');
+define('MESSAGE_ERROR_COMMENT', 'You have already commented on this post.');

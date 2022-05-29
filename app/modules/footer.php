@@ -38,15 +38,9 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="<?= $static_url ?>vendor/jquery/jquery.min.js"></script>
-<script src="<?= $static_url ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="<?= $static_url ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="<?= $static_url ?>js/sb-admin-2.min.js"></script>
+<script src="<?= $static_url ?>js/script.js?<?= time() ?>"></script>
 <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?><script src="<?= $static_url ?>vendor/datatables/jquery.dataTables.min.js"></script><?php } ?>
 <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes" && empty($_GET['id'])) { ?><script src="<?= $static_url ?>vendor/datatables/jquery.dataTables.min.js"></script><?php } ?>
 <?php if (!empty($_GET['page']) && $_GET['page'] == "vins") { ?><script src="<?= $static_url ?>vendor/datatables/dataTables.bootstrap4.min.js"></script><?php } ?>
@@ -59,8 +53,16 @@
 <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes" && empty($_GET['id'])) { ?><script src="<?= $static_url ?>js/champagnes.js?<?= time() ?>"></script><?php } ?>
 <?php if (!empty($_GET['page']) && $_GET['page'] == "champagnes" && !empty($_GET['id'])) { ?><script src="<?= $static_url ?>js/champagnes-id.js?<?= time() ?>"></script><?php } ?>
 
-<!-- Page level plugins -->
-<script src="<?= $static_url ?>vendor/chart.js/Chart.min.js"></script>
+<?php if (empty($_GET['page'])) { ?>
+
+    <!-- Page level plugins -->
+    <script src="<?= $static_url ?>vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="<?= $static_url ?>js/chart-area.js?<?= time() ?>"></script>
+    <script src="<?= $static_url ?>js/chart-pie.js?<?= time() ?>"></script>
+
+<?php } ?>
 
 </body>
 

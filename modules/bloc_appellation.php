@@ -1,4 +1,4 @@
-<div class="container-md mt-5 mb-5 bloc_vin_title">
+<div id="appellationRegions" class="container-md mt-5 mb-5 bloc_vin_title">
     <h2 class="text-light"><span><i class="fa-solid fa-chevron-right me-2"></i> <?= strtoupper(constant('APPELLATION_REGION')) ?></span></h2>
 </div>
 

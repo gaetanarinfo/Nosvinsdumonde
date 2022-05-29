@@ -7,7 +7,7 @@ include '../../config/config.php';
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fra_fra');
 
-$final;
+$final = '';
 
 if (isset($_POST)) {
 
@@ -80,11 +80,11 @@ if (isset($_POST)) {
         }
 
         $update = $db->query('UPDATE `definitions` SET 
-        `content` = "' . stripslashes($_POST['content_fr']) . '"
+        `content` = "' . addslashes($_POST['content_fr']) . '"
          WHERE lang = "fr" AND vin_id = "' . $_SESSION['vin_id'] . '"');
 
         $update = $db->query('UPDATE `definitions` SET 
-         `content` = "' . stripslashes($_POST['content_en']) . '"
+         `content` = "' . addslashes($_POST['content_en']) . '"
           WHERE lang = "en" AND vin_id = "' . $_SESSION['vin_id'] . '"');
 
          $final = ['user' => true, 'message' => 'Vin ajouter', 'message2' => 'Votre vin a bien été ajouter.', 'icone' => '<i class="fa-solid fa-circle-check" style="font-size: 40px;"></i>'];

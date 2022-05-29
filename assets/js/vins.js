@@ -101,6 +101,9 @@ $(document).on('click', '#couleur ul li .bottle', function (e) {
 
     $('#couleurFinal').val(value);
 
+    $(this).parent().parent().parent().hide();
+    $(this).parent().parent().parent().parent().find('label').find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+
 })
 
 $(document).on('click', '#alliance ul li .alliance_item', function (e) {
@@ -115,6 +118,9 @@ $(document).on('click', '#alliance ul li .alliance_item', function (e) {
 
     $('#allianceFinal').val(value);
 
+    $(this).parent().parent().parent().hide();
+    $(this).parent().parent().parent().parent().find('label').find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+
 })
 
 $(document).on('click', '#gout ul li .gout_item', function (e) {
@@ -128,6 +134,9 @@ $(document).on('click', '#gout ul li .gout_item', function (e) {
     li.parent().addClass('active');
 
     $('#goutFinal').val(value);
+
+    $(this).parent().parent().parent().hide();
+    $(this).parent().parent().parent().parent().find('label').find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
 
 })
 
@@ -509,4 +518,20 @@ $('#region').on('change', function (e) {
         }
     })
 
+})
+
+$(document).on('click', '#remove_filter', function (e) {
+
+    e.preventDefault();
+
+    location.reload();
+
+})
+
+$(document).on('change', 'form', function (e) {
+    $('.filter').show();
+})
+
+$(document).on('click', '#couleur .bottle, #gout .gout_item, #alliance .alliance_item', function (e) {
+    $('.filter').show();
 })

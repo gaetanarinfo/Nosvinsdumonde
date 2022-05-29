@@ -8,7 +8,7 @@ include "../assets/langs/" . $_GET['lang'] . ".php";
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 
-$final;
+$final = '';
 
 if (isset($_GET['search'])) {
 
@@ -39,9 +39,20 @@ if (isset($_GET['search'])) {
 
     $search_produits = selectDB($select, $table, $where, $db, '*');
 
+    // Actualites
+    $select = 'C.title, C.url';
+
+    $table = 'contents AS C';
+
+    $where = 'C.title COLLATE utf8mb4_0900_ai_ci LIKE "%' . trim($_GET['search']) . '%" ORDER BY C.title LIMIT 10';
+
+    $contents_search = selectDB($select, $table, $where, $db, '*');
+
     $pages = '';
 
-    if (count($search_produits) != 0) {
+    $total = '';
+
+    if (count($search_produits) >= 1) {
 
         foreach ($search_produits as $search_produit) {
 
@@ -49,18 +60,30 @@ if (isset($_GET['search'])) {
                 $pages = 'vins';
             } else if ($search_produit['boissonId'] == 2) {
                 $pages = 'champagnes';
-            }else{
+            } else {
                 $pages = '';
             }
 
-            if($search_produit['millesimeBoisson'] != "") $return = '<li class="list-group-item"><a class="text-decoration-none text-white" href="https://' . $_GET['host'] . '/' . $_GET['lang'] . '/' . $pages . '/' . $search_produit['idBoisson'] . '"><i class="fa-solid fa-magnifying-glass-arrow-right me-2"></i>' . $search_produit['nomBoisson'] . ' - ' . $search_produit['millesimeBoisson'] . ' - ' . $search_produit['apellationBoisson'] . '</a></li>';
+            if ($search_produit['millesimeBoisson'] != "") $return = '<li class="list-group-item"><a class="text-decoration-none text-white" href="https://' . $_GET['host'] . '/' . $_GET['lang'] . '/' . $pages . '/' . $search_produit['idBoisson'] . '"><i class="fa-solid fa-magnifying-glass-arrow-right me-2"></i>' . $search_produit['nomBoisson'] . ' - ' . $search_produit['millesimeBoisson'] . ' - ' . $search_produit['apellationBoisson'] . '</a></li>';
             else $return = '<li class="list-group-item"><a class="text-decoration-none text-white" href="https://' . $_GET['host'] . '/' . $_GET['lang'] . '/' . $pages . '/' . $search_produit['idBoisson'] . '"><i class="fa-solid fa-magnifying-glass-arrow-right me-2"></i>' . $search_produit['nomBoisson'] . ' - ' . $search_produit['apellationBoisson'] . '</a></li>';
-                
-            $final = ['search' => true, 'return' => $return];
+
+            $total .= $return;
         }
+
+        $final = ['search' => true, 'return' => $total];
+    } else if (count($contents_search) >= 1) {
+
+        foreach ($contents_search as $search_content) {
+
+            $return = '<li class="list-group-item"><a class="text-decoration-none text-white" href="https://' . $_GET['host'] . '/' . $_GET['lang'] . '/actualite/' . $search_content['url'] . '"><i class="fa-solid fa-magnifying-glass-arrow-right me-2"></i>' . $search_content['title'] . '</a></li>';
+
+            $total .= $return;
+        }
+
+        $final = ['search' => true, 'return' => $total];
     } else {
 
-        $return = '<li class="list-group-item text-warning fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i>' . constant('EMPTY_SEARCH') .'</li>';
+        $return = '<li class="list-group-item text-warning fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i>' . constant('EMPTY_SEARCH') . '</li>';
 
         $final = ['search' => false, 'return' => $return];
     }

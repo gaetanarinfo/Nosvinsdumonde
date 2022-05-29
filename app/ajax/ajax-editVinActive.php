@@ -7,7 +7,7 @@ include '../../config/config.php';
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fra_fra');
 
-$final;
+$final = '';
 
 if (isset($_POST['delete'])) {
     $update = $db->query('UPDATE `vins` SET `active` = 0 WHERE id = ' . $_POST['vinId']);

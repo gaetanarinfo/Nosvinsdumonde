@@ -1,8 +1,8 @@
-<div class="container-md mt-5 mb-5 bloc_vin_title">
+<div class="container-md mt-5 mb-5 bloc_vin_title" id="livraison">
     <h2 class="text-light"><span><i class="fa-solid fa-chevron-right me-2"></i> <?= strtoupper(constant('TITLE_LIVRAISON')) ?></span></h2>
 </div>
 
-<div class="container-md mt-5 mb-5" id="bloc_add_vin">
+<div class="container-md mt-5 mb-5">
 
     <div class="row">
 

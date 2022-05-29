@@ -12,8 +12,8 @@ define('TITLE_CHAMPAGNES', 'Mise en relation des champagnes - Présentation des 
 define('NAVBAR_ITEM_1', 'Accueil');
 define('NAVBAR_ITEM_2', 'Vins');
 define('NAVBAR_ITEM_3', 'Champagnes');
-define('NAVBAR_ITEM_4', 'Ajouter un produit');
-define('SEARCH_PLACEHOLER', 'Recherchez un produit, une marque ...');
+define('NAVBAR_ITEM_4', 'Ajouter <span class="domain_name">un produit</span>');
+define('SEARCH_PLACEHOLER', 'Recherchez un produit, une actu ...');
 
 define('NAVBAR_APP', 'Accéder à l\'application');
 
@@ -361,6 +361,8 @@ define('LINK_16', 'Panier');
 define('ABUS', 'L\'ABUS D\'ALCOOL EST DANGEREUX POUR LA SANTÉ, À CONSOMMER AVEC MODÉRATION.');
 
 // PANIER - ACHAT
+define('ERROR_CART', 'BIENTÔT EN STOCK !');
+define('EMPTY_PRODUIT', 'Produit provisoirement indisponible sur nosvinsdumonde.com');
 define('ADD_CART', 'Ajouter au panier');
 define('REGLE_CART', 'Régler mes achats');
 define('TITLE_PAGE_CARTE', 'Panier');
@@ -550,3 +552,49 @@ define('BLOC_SEMI_FOOT_1_1', 'GARANTI');
 define('BLOC_SEMI_FOOT_2_2', 'EN 48H CHEZ VOUS*');
 define('BLOC_SEMI_FOOT_3_3', 'SÉCURISÉ');
 define('BLOC_SEMI_FOOT_4_4', 'DÉGUSTÉS ET APPROUVÉS');
+
+define('TITLE_PAGE_PLANS', 'Bons plans alcool promotion vin champagne pas cher');
+define('LINK_PAGE_SELECTION', 'Notre sélection');
+define('LINK_PAGE_PLANS', 'Bons Plans');
+define('PLAN_POURCENT', 'OFFRE À SAISIR');
+
+define('TITLE_PAGE_ACTUALITES', 'Nos actualités');
+define('LINK_ACTUALITE', 'Actualités');
+define('SUITE', 'Lire la suite');
+define('PLUS_ACTU', 'Voir plus d\'actualités');
+define('ARTICLE_LAST', 'DERNIERS ARTICLES');
+define('PAR', 'Par ');
+define('PARTAGE', 'Partage');
+define('LE', 'Le');
+define('LIRE_AUSSI', 'A lire aussi');
+
+define('PLUS_PRODUITS', 'Voir plus de produits');
+define('TOUS_PRODUITS', 'Voir tous nos produits');
+define('RELATION_VIN', 'Vous pourriez adorer, ces vins');
+
+define('SIGNAL_COMMENT', 'Signaler un commentaire');
+define('SIGNAL_COMMENT_TEST', '<p>Vous avez repéré un commentaire avec un contenu illégal ou portant atteinte à vos droits ?</p>
+<p>Afin de nous aider à traiter votre alerte, merci de nous décrire précisément ce qui vous paraît illégal dans ce message.</p>');
+
+define('MESSAGE_ABUSE_1', 'Votre signalement a bien été pris en compte. Notre équipe va s\'en occuper rapidement.');
+define('MESSAGE_ABUSE_2', 'Une erreur est survenue !');
+
+define('FORM_ABUSE_1', 'Veuillez saisir votre mail *');
+define('FORM_ABUSE_2', 'Titre de votre signalement');
+define('FORM_ABUSE_3', 'Expliquez ici pourquoi le message vous parait illégal *');
+
+define('ALL_COMMENTS', 'Pas encore de commentaire à cet article.');
+
+define('SIGNAL_COMMENTS', 'Signaler ce contenu comme inapproprié');
+
+define('LAISSE_COMMENT', 'Laisser un commentaire');
+
+define('COUNT_COMMENT', 'Tous les commentaires');
+
+define('FORM_COMMENT_1', 'Votre nom/pseudo');
+define('FORM_COMMENT_2', 'Votre email');
+define('FORM_COMMENT_3', 'Votre commentaire');
+define('PUBLIER', 'PUBLIER');
+
+define('MESSAGE_MERCI_COMMENT', 'Merci pour votre commentaire.');
+define('MESSAGE_ERROR_COMMENT', 'Vous avez déjà commenté cette actualité.');

@@ -196,7 +196,10 @@
 <?= (!empty($_GET['page']) && $_GET['page'] == 'panier' && $_GET['step'] == "3" && !empty($_SESSION['user_id'])) ? '<script src="' . $static_url . 'js/client.js?' . time() . '"></script>' : '' ?>
 <script src="<?= $static_url ?>js/jquery.cookie.js"></script>
 <script src="<?= $static_url ?>js/bootstrap.min.js"></script>
+<script src="<?= $static_url ?>js/jquery.mousewheel.js"></script>
 <script src="<?= $static_url ?>js/script.js?<?= time() ?>"></script>
+<?= (empty($_GET['page'])) ? '<script src="' . $static_url . 'js/scroll.js?' . time() . '"></script>' : '' ?>
+
 <?= (!empty($_GET['page']) && $_GET['page'] == 'vins' && empty($_GET['id'])) ? '<script src="' . $static_url . 'js/vins.js?' . time() . '"></script>' : '' ?>
 <?= (!empty($_GET['page']) && $_GET['page'] == 'vins' && !empty($_GET['id'])) ? '<script src="' . $static_url . 'js/vins-id.js?' . time() . '"></script>' : '' ?>
 <?= (!empty($_GET['page']) && $_GET['page'] == 'champagnes' && empty($_GET['id'])) ? '<script src="' . $static_url . 'js/champagnes.js?' . time() . '"></script>' : '' ?>
@@ -208,6 +211,12 @@
 <?= (!empty($_GET['page']) && $_GET['page'] == 'forgot-password') ? '<script src="' . $static_url . 'js/forgot-password.js?' . time() . '"></script>' : '' ?>
 <?= (!empty($_GET['page']) && $_GET['page'] == 'panier') ? '<script src="' . $static_url . 'js/panier.js?' . time() . '"></script>' : '' ?>
 <?= (!empty($_GET['page']) && $_GET['page'] == 'gestion-compte' && !empty($_SESSION['user_id'])) ? '<script src="' . $static_url . 'js/gestion-compte.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'bons-plans') ? '<script src="' . $static_url . 'js/bons-plans.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'actualites') ? '<script src="' . $static_url . 'js/actualites.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'actualite') ? '<script src="' . $static_url . 'js/actualite.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'article') ? '<script src="' . $static_url . 'js/actualite.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'produits') ? '<script src="' . $static_url . 'js/produits.js?' . time() . '"></script>' : '' ?>
+<?= (!empty($_GET['page']) && $_GET['page'] == 'meteo-vignes') ? '<script src="' . $static_url . 'js/meteo-vignes.js?' . time() . '"></script>' : '' ?>
 
 <?php if (!empty($_GET['page']) && $_GET['page'] == 'panier' && $_GET['step'] == "3" && !empty($_SESSION['user_id'])) { ?>
     <script src="https://www.paypal.com/sdk/js?client-id=Ae7gZSOdUtSzTBRkci42fn5VDNQttxYeEQiaX-yZSqYcjTkymRJ9SEXhIPPBCsvDsuPrL6nB6VdIeH_Y&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>

@@ -4,7 +4,7 @@ include '../config/fonctions.php';
 include '../config/connexion.php';
 include "../assets/langs/" . $_POST['lang'] . ".php";
 
-$final;
+$final = '';
 
 if (!empty($_POST)) {
 

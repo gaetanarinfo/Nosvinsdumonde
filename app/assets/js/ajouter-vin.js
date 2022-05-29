@@ -108,6 +108,8 @@ $(document).on('click', '#save', function (e) {
         contentType: false,
         success: function (data) {
 
+            console.log(data);
+
             var res = JSON.parse(data);
 
             if (res.user == true) {

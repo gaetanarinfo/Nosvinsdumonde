@@ -7,19 +7,89 @@ if (isset($_GET['page'])) {
     switch ($page) {
 
         case 'vins':
-            if (!empty($_GET['id'])) $title = $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' vin ' . strtolower($vin['couleurBoisson']) . ' ' . $vin['apellationBoisson'];
-            else $title = constant('TITLE_VINS');
 
-            if (!empty($_GET['id'])) $description = 'Le ' . $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' ' . $vin['apellationBoisson'] . ' est un excellent vin ' . strtolower($vin['couleurBoisson']) . ' ! Dévouvrez-le !';
-            else $description = constant('SUBTITLE_PAGE_VINS');
+            if (!empty($_GET['id']) && $vin['couleurBoisson'] != 0) {
+                if (!empty($_GET['id'])) {
+                    if ($vin['apellationBoisson'] != "") {
+                        $title = $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' vin ' . strtolower($vin['couleurBoisson']) . ' ' . $vin['apellationBoisson'];
+                    } else {
+                        $title = $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' vin ' . strtolower($vin['couleurBoisson']);
+                    }
+                } else {
+                    $title = constant('TITLE_VINS');
+                }
+            } else {
+                if (!empty($_GET['id'])) {
+                    if ($vin['millesimeBoisson'] != "") {
+                        $title = $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' ' . $vin['apellationBoisson'];
+                    } else {
+                        $title = $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'];
+                    }
+                } else {
+                    $title = constant('TITLE_VINS');
+                }
+            }
+
+            if (!empty($_GET['id'])) {
+                if (!empty($vin['apellationBoisson'])) {
+                    if (!empty($vin['couleurBoisson'])) {
+                        $description = 'Le ' . $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' ' . $vin['apellationBoisson'] . ' est un excellent vin ' . strtolower($vin['couleurBoisson']) . ' ! Dévouvrez-le !';
+                    } else {
+                        $description = 'Le ' . $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' ' . $vin['apellationBoisson'] . ' est un excellent vin ! Dévouvrez-le !';
+                    }
+                } else {
+                    if (!empty($vin['couleurBoisson'])) {
+                        $description = 'Le ' . $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' est un excellent vin ' . strtolower($vin['couleurBoisson']) . ' ! Dévouvrez-le !';
+                    } else {
+                        $description = 'Le ' . $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] . ' est un excellent vin ! Dévouvrez-le !';
+                    }
+                }
+            } else {
+                $description = constant('SUBTITLE_PAGE_VINS');
+            }
 
             break;
-        case 'champagnes':
-            if (!empty($_GET['id'])) $title = $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' champagne ' . strtolower($champagne['couleurBoisson']) . ' ' . $champagne['apellationBoisson'];
-            else $title = constant('TITLE_CHAMPAGNES');
 
-            if (!empty($_GET['id'])) $description = 'Le ' . $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' ' . $champagne['apellationBoisson'] . ' est un excellent champagne ' . strtolower($champagne['couleurBoisson']) . ' ! Dévouvrez-le !';
-            else $description = constant('SUBTITLE_PAGE_CHAMPAGNES');
+        case 'champagnes':
+            if (!empty($_GET['id']) && $champagne['couleurBoisson'] != 0) {
+                if (!empty($_GET['id'])) {
+                    if ($champagne['apellationBoisson'] != "") {
+                        $title = $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' champagne ' . strtolower($champagne['couleurBoisson']) . ' ' . $champagne['apellationBoisson'];
+                    } else {
+                        $title = $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' champagne ' . strtolower($champagne['couleurBoisson']);
+                    }
+                } else {
+                    $title = constant('TITLE_CHAMPAGNES');
+                }
+            } else {
+                if (!empty($_GET['id'])) {
+                    if ($champagne['millesimeBoisson'] != "") {
+                        $title = $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' ' . $champagne['apellationBoisson'];
+                    } else {
+                        $title = $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'];
+                    }
+                } else {
+                    $title = constant('TITLE_CHAMPAGNES');
+                }
+            }
+
+            if (!empty($_GET['id'])) {
+                if (!empty($champagne['apellationBoisson'])) {
+                    if (!empty($champagne['couleurBoisson'])) {
+                        $description = 'Le ' . $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' ' . $champagne['apellationBoisson'] . ' est un excellent champagne ' . strtolower($champagne['couleurBoisson']) . ' ! Dévouvrez-le !';
+                    } else {
+                        $description = 'Le ' . $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' ' . $champagne['apellationBoisson'] . ' est un excellent champagne ! Dévouvrez-le !';
+                    }
+                } else {
+                    if (!empty($champagne['couleurBoisson'])) {
+                        $description = 'Le ' . $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' est un excellent champagne ' . strtolower($champagne['couleurBoisson']) . ' ! Dévouvrez-le !';
+                    } else {
+                        $description = 'Le ' . $champagne['nomBoisson'] . ' ' . $champagne['millesimeBoisson'] . ' est un excellent champagne ! Dévouvrez-le !';
+                    }
+                }
+            } else {
+                $description = constant('SUBTITLE_PAGE_CHAMPAGNES');
+            }
 
             break;
 
@@ -193,14 +263,43 @@ if (isset($_GET['page'])) {
             $description = constant('MINI_DESC');
 
             break;
+
+        case 'bons-plans':
+
+            $title = constant('TITLE_PAGE_PLANS');
+            $description = constant('MINI_DESC');
+
+            break;
+
+        case 'actualites':
+
+            $title = constant('TITLE_PAGE_ACTUALITES');
+            $description = constant('MINI_DESC');
+
+            break;
+
+        case 'actualite':
+
+            $title = str_replace('"', '', str_replace(',', '', $article['title']));
+            $description = $article['content'];
+
+            break;
+
+        case 'article':
+
+            $title = str_replace('"', '', str_replace(',', '', $article['title']));
+            $description = $article['content'];
+
+            break;
+
     }
 }
 
 if (isset($_GET['page']) && $_GET['page'] == $page) { // Page Get 
 ?>
 
-    <?= '<title>' . $title . ' - Nosvinsdumonde</title>' ?>
-    <meta name="description" content="<?= $description ?>" />
+    <?= '<title>' . html_entity_decode($title) . ' - Nosvinsdumonde</title>' ?>
+    <meta name="description" content="<?= html_entity_decode($description) ?>" />
 
 <?php } else { // Default 
 ?>

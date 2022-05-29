@@ -17,7 +17,7 @@ if(empty($_SESSION['user_id'])) {
 	$userVerif = selectDB('*', 'users', 'id = ' . $_SESSION['user_id'], $db, '1');
 }
 
-if(!empty($_SESSION['user_id']) && $userVerif['type_id'] == 1) {
+if(!empty($_SESSION['user_id']) && $userVerif['type_id'] == 1 && $userVerif['type_id'] == 2) {
 	header('Location: ../../404');
 }
 

@@ -14,7 +14,10 @@ V.id AS idBoisson,
 B.nom AS typeBoisson,
 AP.nom_fr_fr AS apellationBoisson,
 CN.nom AS contenanceBoisson,
-R.nom_fr_fr AS regionBoisson
+R.nom_fr_fr AS regionBoisson,
+V.plan AS planBoisson,
+V.plan_pourcent AS planPourcentBoisson,
+V.remise_plan AS remiseBoisson
 ';
 
     $table = 'vins AS V
@@ -71,19 +74,27 @@ LEFT JOIN regions AS R ON R.id = V.region_id';
 
             <?php foreach ($ajax as $vin) {  ?>
 
-                <div class="col-sm-4">
-                    <div class="card mb-4">
+                <div class="col-md-4  mb-4">
+                    <div class="card">
                         <div class="row g-0">
                             <div class="col-md-4 card_image_vin">
-                                <img role="button" data-fancybox src="<?= '../assets/img/' . strtolower($vin['typeBoisson']) . '/' . $vin['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $vin['nomBoisson'] ?>">
+                                <?php if ($vin['planBoisson'] >= 1) { ?>
+                                    <div class="vin_plan">
+                                        <span>-<?= $vin['planPourcentBoisson'] ?>%</span>
+                                        <span><?= constant('PLAN_POURCENT') ?></span>
+                                    </div>
+                                <?php } ?>
+                                <div>
+                                    <img role="button" data-fancybox src="<?= '../assets/img/' . strtolower($vin['typeBoisson']) . '/' . $vin['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $vin['nomBoisson'] ?>">
+                                </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title"><a class="text-dark fw-bold text-decoration-none" href="/<?= $_GET['lang'] ?>/<?= strtolower($vin['typeBoisson']) . '/' . $vin['idBoisson']; ?>"><?= mb_strtoupper($vin['nomBoisson']) . ' ' . $vin['millesimeBoisson'] ?></a></h5>
+                                    <h5 class="card-title"><a class="text-dark fw-bold text-decoration-none" href="/<?= $_GET['lang'] ?>/<?= strtolower($vin['typeBoisson']) . '/' . $vin['idBoisson']; ?>"><?= $vin['nomBoisson'] . ' ' . $vin['millesimeBoisson'] ?></a></h5>
                                     <div class="m-auto"><span class="badge_region"><?= $vin['regionBoisson'] ?></span></div>
                                     <div class="mb-3"><a href="/<?= $_GET['lang'] ?>/<?= strtolower($vin['typeBoisson']) . '/' . $vin['idBoisson']; ?>" class="btn btn-outline-warning "><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a></div>
                                     <div class="m-auto appellation"><span><?= $vin['apellationBoisson'] ?></span></div>
-                                    <div class="m-auto prix"><span><span class="chiffre"><?= number_format($vin['prixBoisson'], 2, ',', '') ?> €</div>
+                                    <div class="m-auto prix"><span><span class="chiffre"><?= ($vin['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($vin['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($vin['remiseBoisson'], 2, ',', '') : number_format($vin['prixBoisson'], 2, ',', '') ?> €</div>
                                     <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $vin['contenanceBoisson'] ?></span></div>
                                 </div>
                             </div>

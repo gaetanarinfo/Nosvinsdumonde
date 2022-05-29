@@ -76,6 +76,7 @@
                                             <th>Millésime</th>
                                             <th>Prix</th>
                                             <th>Soit</th>
+                                            <th>Stock</th>
                                             <th>Crée le</th>
                                             <th>Visite</th>
                                             <th>Actions</th>
@@ -90,6 +91,7 @@
                                             <th>Millésime</th>
                                             <th>Prix</th>
                                             <th>Soit</th>
+                                            <th>Stock</th>
                                             <th>Crée le</th>
                                             <th>Visite</th>
                                             <th>Actions</th>
@@ -107,6 +109,7 @@
                                                 <td><?= $champagne_user['millesimeBoisson'] ?></td>
                                                 <td><?= number_format($champagne_user['prixBoisson'], 2, ',', '') ?> €</td>
                                                 <td><?= number_format($champagne_user['soitBoisson'], 2, ',', '') ?> €</td>
+                                                <td><?= ($champagne_user['stockBoisson'] == 1) ? 'En stock' : 'Indisponible' ?></td>
                                                 <td><?= date('d/m/Y', strtotime($champagne_user['createBoisson'])) ?></td>
                                                 <td><?= intval($champagne_user['viewBoisson']) ?></td>
                                                 <td>

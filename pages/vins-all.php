@@ -141,6 +141,10 @@
                             </div>
                         </div>
 
+                        <div class="mb-4 col-md-2 filter" style="display: none;">
+                            <a id="remove_filter" class="btn btn-outline-info"><i class="fa-solid fa-eraser me-2"></i><b>Effacer les filtres</b></a>
+                        </div>
+
                     </div>
 
                 </form>

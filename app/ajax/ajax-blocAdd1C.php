@@ -7,7 +7,7 @@ include '../../config/config.php';
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fra_fra');
 
-$final;
+$final = '';
 
 if (isset($_POST)) {
 
@@ -26,7 +26,7 @@ if (isset($_POST)) {
         `created_at`) 
         VALUES (
         "' . $_SESSION['user_id'] . '",
-        1,
+        2,
         "' . $_POST['titre'] . '",
         "' . $_POST['contenance'] . '",
         "' . $_POST['millesime'] . '",

@@ -186,7 +186,8 @@ if (empty($_COOKIE['port'])) {
 
                                 $quantity = $counter_cart[$cart['idBoisson']];
 
-                                $total += $cart['prixBoisson'] * $quantity;
+                                if ($cart['planBoisson'] >= 1) $total += $cart['remiseBoisson'] * $quantity;
+                                else $total += $cart['prixBoisson'] * $quantity;
 
                             ?>
 
@@ -210,8 +211,14 @@ if (empty($_COOKIE['port'])) {
 
                                     </div>
 
-                                    <div class="col-md-3" style="text-align: right;">
-                                        <span class="total"><?= number_format($cart['prixBoisson'] * $quantity, 2, ',', ''); ?> €</span>
+                                    <div class="col-md-3" style="text-align: right;display: flex;flex-direction: column;align-items: flex-end;">
+                                        <span class="total"><?= ($cart['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($cart['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($cart['remiseBoisson'] * $quantity, 2, ',', '') : number_format($cart['prixBoisson'] * $quantity, 2, ',', ''); ?> €</span>
+                                        <?php if ($cart['planBoisson'] >= 1) { ?>
+                                            <div class="vin_plan">
+                                                <span>-<?= $cart['planPourcentBoisson'] ?>%</span>
+                                                <span><?= constant('PLAN_POURCENT') ?></span>
+                                            </div>
+                                        <?php } ?>
                                     </div>
 
                                 </div>

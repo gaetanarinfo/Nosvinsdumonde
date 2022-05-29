@@ -40,19 +40,27 @@
 
         <?php foreach ($favoris as $favoris) {  ?>
 
-            <div class="col-sm-4 fav_box_<?= $favoris['idBoisson'] ?>">
-                <div class="card mb-4">
+            <div class="col-md-4 mb-4 fav_box_<?= $favoris['idBoisson'] ?>">
+                <div class="card">
                     <div class="row g-0">
                         <div class="col-md-4 card_image_vin">
-                            <img role="button" data-fancybox src="<?= $static_img . strtolower($favoris['typeBoisson']) . '/' . $favoris['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $favoris['nomBoisson'] ?>">
+                            <?php if ($favoris['planBoisson'] >= 1) { ?>
+                                <div class="vin_plan">
+                                    <span>-<?= $favoris['planPourcentBoisson'] ?>%</span>
+                                    <span><?= constant('PLAN_POURCENT') ?></span>
+                                </div>
+                            <?php } ?>
+                            <div>
+                                <img role="button" data-fancybox src="<?= $static_img . strtolower($favoris['typeBoisson']) . '/' . $favoris['imageBoisson']; ?>" class="img-fluid rounded-start" alt="<?= $favoris['nomBoisson'] ?>">
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><?= mb_strtoupper($favoris['nomBoisson']) . ' ' . $favoris['millesimeBoisson']  ?></h5>
+                                <h5 class="card-title"><?= $favoris['nomBoisson'] . ' ' . $favoris['millesimeBoisson']  ?></h5>
                                 <div class="m-auto"><span class="badge_region"><?= $favoris['regionBoisson'] ?></span></div>
                                 <div class="mb-3"><a href="/<?= $language ?>/<?= strtolower($favoris['typeBoisson']) . '/' . $favoris['idBoisson']; ?>" class="btn btn-outline-warning "><?= strtoupper(constant('DECOUVRIR_BTN')) ?></a><span role="button" data-id="<?= $favoris['idBoisson'] ?>" class="ms-2 remove_favoris btn btn-outline-danger favoris_i"><i class="fa-solid fa-trash-can"></i> </span></div>
                                 <div class="m-auto appellation"><span><?= $favoris['apellationBoisson'] ?></span></div>
-                                <div class="m-auto prix"><span><span class="chiffre"><?= number_format($favoris['prixBoisson'], 2, ',', '') ?> €</div>
+                                <div class="m-auto prix"><span><span class="chiffre"><?= ($favoris['planBoisson'] >= 1) ? '<span class="text-warning text-decoration-line-through me-2" style="font-size: 18px;">' . number_format($favoris['prixBoisson'], 2, ',', '') . ' €</span> ' . number_format($favoris['remiseBoisson'], 2, ',', '') : number_format($favoris['prixBoisson'], 2, ',', '') ?> €</div>
                                 <div class="m-auto mb-3 contenance"><span><?= constant('CONTENANCE') ?> <?= $favoris['contenanceBoisson'] ?></span></div>
                             </div>
                         </div>
